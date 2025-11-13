@@ -137,3 +137,174 @@
 
 </body>
 </html>
+💡 Co to dělá:
+🔹 Horní zelená lišta s logem a položkami „Home“, „Test“, „Nastavení“.
+
+🔹 Po najíždění myší (nebo kliknutí na mobilu) se rozbalí nabídka.
+
+🔹 Každá položka může mít libovolný počet podstránek (submenu).
+
+🔹 Design je jednoduchý, čistý a funguje i na GitHub Pages.
+
+Chceš, abych ti tam přidal i funkční přepínání obsahu (např. když klikneš na „Zahájit test“, aby se zobrazil test přímo na stránce bez reloadu)?
+To by se dalo udělat pomocí JavaScriptu (SPA styl).
+
+
+
+
+
+
+You said:
+dej tam nastaveňí n
+
+
+
+ChatGPT said:
+Jasně 😄
+Takže chceš, aby v horní liště byla položka „Nastavení“, která se dá rozkliknout (třeba s možnostmi jako „Zvuk“, „Ovládání“, „Jazyk“, atd.) — a aby vše vypadalo pěkně a fungovalo.
+
+Tady máš kompletní, funkční verzi stránky s nastavením (včetně rozbalovací nabídky):
+
+html
+Copy code
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MelonMC Test Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f3fff3;
+    }
+
+    /* horní lišta */
+    nav {
+      background-color: #00c060;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 14px 0;
+    }
+
+    /* hlavní odkazy */
+    .menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .menu li {
+      position: relative;
+    }
+
+    .menu > li > a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      transition: background 0.3s;
+    }
+
+    .menu > li > a:hover {
+      background: #00994d;
+    }
+
+    /* rozbalovací nabídka */
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      z-index: 1;
+    }
+
+    .submenu a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .submenu a:hover {
+      background-color: #e0ffe0;
+    }
+
+    /* zobraz submenu při hoveru */
+    .menu li:hover .submenu {
+      display: block;
+    }
+
+    /* obsah stránky */
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #00c060;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00994d;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">🍉 MelonMC</div>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Test ⬇️</a>
+        <div class="submenu">
+          <a href="#">Zahájit test</a>
+          <a href="#">Výsledky</a>
+          <a href="#">Nápověda</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Nastavení ⬇️</a>
+        <div class="submenu">
+          <a href="#">🎵 Zvuk</a>
+          <a href="#">⌨️ Ovládání</a>
+          <a href="#">🌐 Jazyk</a>
+          <a href="#">ℹ️ O aplikaci</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <h1>🍉 MelonMC Test stránka</h1>
+    <p>Vyzkoušej horní menu – otevři <strong>Nastavení</strong> a podívej se na možnosti.</p>
+    <button onclick="alert('Test tlačítko funguje! 🎉')">Klikni mě</button>
+  </div>
+
+</body>
+</html>
