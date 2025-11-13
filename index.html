@@ -1,12 +1,108 @@
 <!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Test GitHub stránky</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MelonMC Test Slidy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1fff1;
+      color: #222;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .slide {
+      display: none;
+      padding: 60px 20px;
+    }
+    .active {
+      display: block;
+    }
+    .nav {
+      margin-top: 40px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background-color: #00c060;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #00994d;
+    }
+    header {
+      background: #00c060;
+      color: white;
+      padding: 10px;
+      font-size: 20px;
+      position: sticky;
+      top: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>🎉 Funguje to!</h1>
-  <p>Toto je moje první GitHub stránka.</p>
+
+<header>🍉 MelonMC Test Slidy</header>
+
+<!-- Slide 1 -->
+<div class="slide active" id="slide1">
+  <h1>Vítej na testovací stránce!</h1>
+  <p>Toto je první slid (Home).</p>
+  <div class="nav">
+    <button onclick="nextSlide()">Další ➡️</button>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+  <h1>Testovací část</h1>
+  <p>Tady můžeš mít obsah testu, tlačítka, nebo jiné informace.</p>
+  <div class="nav">
+    <button onclick="prevSlide()">⬅️ Zpět</button>
+    <button onclick="nextSlide()">Další ➡️</button>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+  <h1>Konec testu</h1>
+  <p>Tohle je poslední slid. Klikni na Home pro návrat.</p>
+  <div class="nav">
+    <button onclick="prevSlide()">⬅️ Zpět</button>
+    <button onclick="goHome()">🏠 Domů</button>
+  </div>
+</div>
+
+<script>
+let currentSlide = 1;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(n) {
+  slides.forEach((s, i) => s.classList.toggle('active', i === n - 1));
+}
+
+function nextSlide() {
+  currentSlide = Math.min(currentSlide + 1, slides.length);
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = Math.max(currentSlide - 1, 1);
+  showSlide(currentSlide);
+}
+
+function goHome() {
+  currentSlide = 1;
+  showSlide(currentSlide);
+}
+</script>
+
 </body>
 </html>
