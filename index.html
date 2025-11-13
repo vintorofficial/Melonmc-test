@@ -14,11 +14,13 @@
     /* horní lišta */
     nav {
       background-color: #00c060;
-      overflow: hidden;
+      overflow: visible;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
+      position: relative; /* ✅ důležité pro vrstvy */
+      z-index: 10;        /* ✅ zajišťuje, že menu je nad ostatním */
     }
 
     nav .logo {
@@ -62,7 +64,7 @@
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       border-radius: 6px;
-      z-index: 1;
+      z-index: 999; /* ✅ aby se submenu ukázalo nad ostatními */
     }
 
     .submenu a {
@@ -86,6 +88,8 @@
     .content {
       padding: 40px;
       text-align: center;
+      position: relative;
+      z-index: 1; /* aby obsah byl pod menu */
     }
 
     button {
@@ -133,7 +137,7 @@
 
   <div class="content">
     <h1>🍉 MelonMC Test stránka</h1>
-    <p>Vyzkoušej horní menu – otevři <strong>Nastavení</strong> a podívej se na možnosti.</p>
+    <p>Vyzkoušej horní menu – teď už bude správně vidět i rozbalovací nabídka ✅</p>
     <button onclick="alert('Test tlačítko funguje! 🎉')">Klikni mě</button>
   </div>
 
